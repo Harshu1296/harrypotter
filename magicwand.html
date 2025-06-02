@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Magic wand</title>
+    
+<style>
+    * {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+body {
+	background: #11151c;
+	height: 100vh;
+	overflow: hidden;
+	display: grid;
+	place-items: center;
+}
+
+#magic_wand {
+	width: 10vmin;
+	aspect-ratio: 1 / 10;
+	background: linear-gradient(
+		to right,
+		rgb(26 24 28) 10%,
+		rgb(42 40 44) 45% 55%,
+		rgb(26 24 28) 90%
+	);
+	position: absolute;
+	left: 5%;
+	top: 20%;
+	translate: -50%;
+	rotate: -3deg;
+	z-index: 1;
+	border-radius: 3vmin;
+	box-shadow: 0vmin 1vmin 4vmin rgb(0 0 0 / 80%);
+	overflow: hidden;
+}
+
+#magic_wand > .wand_cap {
+	height: 20%;
+	width: 100%;
+	background: linear-gradient(
+		to right,
+		rgb(212 221 236) 10%,
+		rgb(255 255 255) 45% 55%,
+		rgb(212 221 236) 90%
+	);
+}
+
+#tiles {
+	display: flex;
+}
+
+.tile {
+	display: grid;
+	place-items: center;
+    height: 100vh;
+	width: 100vw;
+	position: relative;
+	/* overflow: hidden; */
+	aspect-ratio: 1;
+/* 	background-color: #212d40; */
+	border-radius: 6vmin;
+	box-shadow: 0vmin 3vmin 6vmin rgb(0 0 0 / 25%),
+		inset 0vmin 0.5vmin 1vmin rgb(255 255 255 / 15%);
+}
+
+
+
+
+
+
+
+
+
+/* .tile > img {
+	height: 100%;
+   
+	aspect-ratio: 1;
+	position: absolute;
+	left: 0;
+	top: 0;
+	object-fit: cover;
+	opacity: var(--opacity);
+	filter:blur(calc(--blur)* 10px));
+}
+ */
+
+	 .tile > img {
+	 height: 100%;
+		  width: 100vw;
+	 aspect-ratio: 1;
+	 position: absolute;
+/* 	 left: 0; */
+	 top: 0;
+/* 	 object-fit: contain; */
+		  object-fit: fill;
+	 opacity: var(--opacity, 0); /* default hidden */
+	 filter: blur(calc(var(--blur, 1) * 10px)); /* default full blur */
+	 transition: opacity 0.3s ease, filter 0.3s ease;
+	}
+	
+.message-box{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    padding: 25px;
+    text-wrap: wrap-text;
+    color: rgb(243, 243, 243)!important;
+     font-size:14px;
+        font-family:  cursive;
+        /* color: #8b4513; */
+       
+
+    /* From https://css.glass */
+background: rgba(255, 255, 255, 0.14);
+border-radius: 16px;
+box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+backdrop-filter: blur(5.4px);
+-webkit-backdrop-filter: blur(5.4px);
+border: 1px solid rgba(255, 255, 255, 0.54);
+
+}
+
+
+.message-box .text{
+    color: rgb(243, 243, 243);
+    line-height: 1;
+    margin-bottom: 5px;
+    
+}
+
+.message-box span{
+    padding-top: 3px;
+    color: #c1bdba;
+}
+
+ .new {
+        position: absolute;
+        bottom: 10%;
+        left: 50%;
+        padding: 10px;
+        transform: translate(-50%, -50%);
+        font-size: 20px;
+        font-family: "Pacifico", cursive;
+        border: none;
+        background-color: #b4662e;
+        padding: 8px 20px;
+        border-radius: 5px;
+        color: beige;
+        z-index: 30;
+        font-weight: 500;
+        text-decoration: none;
+      }
+      .new:hover {
+        background-color: #8b4513;
+      }
+
+@media screen and (max-width:700px) {
+
+    
+    .message-box .text{
+        color: #ebebeb;
+        font-weight: 800;
+        font-size: 20px!important;
+        /* background: red; */
+        
+    }
+    
+        .new {
+          position: absolute;
+          bottom: 15%;
+          left: 50%;
+          transform: translate(-50%, -50%);
+          font-family: "Pacifico", cursive;
+          border: none;
+          background-color: #b4662e;
+          padding: 8px 20px;
+          border-radius: 5px;
+          color: beige;
+          /* color: rgb(191, 191, 187); */
+
+          z-index: 1;
+          font-weight: 500;
+        }
+    
+}
+
+@media screen and (min-width:700px) {
+
+    .tile > img {
+	
+	object-fit: cover;
+	
+    }
+   
+    
+}
+
+
+</style>
+</head>
+<body>
+    <div id="magic_wand">
+	<div class="wand_cap"></div>
+</div>
+
+<div id="tiles">
+	<div class="tile">
+		<i class="fa-solid fa-image"></i>
+<!-- 		<img src="perfect.jpg" /> -->
+		<img src="https://www.numerama.com/wp-content/uploads/2023/02/img-1479.jpg" />
+	</div>
+
+<!--     <div  class="message-box">
+        <p>
+            <h1 class="text">Hai koi isse cute ?</h1>
+            <br>
+            If I had to choose between you and magic 🔮, I’d give up my wand 🪄 for you.
+            <br>
+            <br>
+
+            <span>My wand has chosen you 🫵🏻 🪄 !</span>
+
+        </p>
+    </div> -->
+
+
+
+	</div>
+
+</div>
+
+ <a class="new" type="button" href="https://memesmanufacturer.com/wp-content/uploads/2024/09/KyuNahiHoRah-1.jpeg" >Talk ?</a>
+
+<script>
+    const magicWand = document.getElementById("magic_wand"),
+	tiles = document.querySelectorAll(".tile");
+
+const xy = (x, y) => ({ x, y }),
+	px = (value) => `${value}px`,
+	deg = (value) => `${value}deg`,
+	clamp = (value, min, max) => Math.max(Math.min(value, max), min);
+
+const updateMouse = (mouseX, mouseY) => {
+	const { innerWidth: windowWidth, innerHeight: windowHeight } = window;
+
+	const mouse = {
+		position: xy(mouseX, mouseY),
+		decimal: xy(mouseX / windowWidth, mouseY / windowHeight),
+		multiplier: xy(1.3, 0.4),
+		offset: xy(windowWidth * -0.15, windowHeight * 0.1),
+		modifiedPosition: xy(0, 0)
+	};
+
+	mouse.modifiedPosition.x =
+		mouse.position.x * mouse.multiplier.x + mouse.offset.x;
+	mouse.modifiedPosition.y =
+		mouse.position.y * mouse.multiplier.y + mouse.offset.y;
+
+	return mouse;
+};
+
+const revealImages = (mouseX) => {
+	for (const tile of tiles) {
+		const dims = tile.getBoundingClientRect(),
+			relMouseX = mouseX - dims.left,
+			mouseXAsDecimal = clamp(relMouseX / dims.width, 0, 1);
+
+		const opacity = mouseXAsDecimal,
+			blur = 1 - mouseXAsDecimal;
+
+		tile.style.setProperty("--opacity", opacity);
+		tile.style.setProperty("--blur", blur);
+	}
+};
+
+const getWandStyles = (mouse) => ({
+	left: px(mouse.modifiedPosition.x),
+	top: px(mouse.modifiedPosition.y),
+	rotate: deg(mouse.decimal.x * 20 - 10)
+});
+
+window.onmousemove = (e) => {
+	const mouse = updateMouse(e.clientX, e.clientY),
+		wandStyles = getWandStyles(mouse);
+
+	magicWand.animate(wandStyles, { duration: 500, fill: "forwards" });
+
+	revealImages(mouse.modifiedPosition.x);
+};
+
+</script>
+</body>
+</html>
