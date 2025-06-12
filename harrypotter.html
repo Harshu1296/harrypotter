@@ -1,0 +1,471 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>harrypotter</title>
+    <link rel="shortcut icon"  class="favicon" href="harry1.png" type="image/x-icon">
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+      integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+
+     <!-- Intro.js CSS -->
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/intro.js/minified/introjs.min.css"
+    />
+    <style>
+      * {
+        padding: 0;
+        margin: 0;
+      }
+      html{
+        margin: 0;
+        padding: 0;
+      }
+/* music  */
+
+       .pause {
+        position: absolute;
+        top: 20%;
+        left: 50%;
+
+        transform: translate(-50%, -50%);
+
+        padding: 10px;
+        font-family: "Sacramento", cursive;
+        /* color: #3a741d; */
+        font-weight: 700;
+        text-wrap: wrap;
+        color: #19a148;
+        font-size: 25px;
+        background: rgba(255, 255, 255, 0.15);
+        border-radius: 25px;
+        backdrop-filter: blur(12px);
+        box-shadow: 0 0 30px rgba(255, 255, 255, 0.2);
+        border: 1px solid rgba(222, 200, 200, 0.4);
+        /* overflow-y: auto; */
+
+        .click-icon {
+          /* background: #fff; */
+          
+          
+          padding: 2px;
+          height: 60px;
+          border-radius: 50%;
+          cursor: pointer;
+          transition: transform 0.2s ease;
+         
+        }
+      }
+
+      /* ghost style  */
+
+      .logo {
+        position: absolute;
+        z-index: 1;
+        margin: 0 50%;
+      }
+      #box {
+        position: relative;
+        width: 100%;
+        height: 100vh;
+        background: url("https://clgoerk.github.io/assets/images/halloween.jpg");
+        background-position: center;
+        background-size: cover;
+      }
+
+      .text-bg {
+        position: absolute;
+        top: 60%;
+        left: 50%;
+        z-index: 1;
+        height: 400px;
+        width: 800px;
+        transform: translate(-50%, -50%);
+        transition: all 5s;
+      }
+      .quote {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        min-width: 200px;
+        max-width: 500px;
+        margin-top: 30px;
+        transform: translate(-50%, -50%);
+        font-size: 24px;
+        font-family: "Pacifico", cursive;
+        color: #8b4513;
+        font-weight: 700;
+        z-index: 1;
+      }
+      .author {
+        float: right;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        z-index: 1;
+        margin-top: 150px;
+        font-family: "cursive";
+        color: #8b4513;
+      }
+
+      .new {
+        position: absolute;
+        bottom: 10%;
+        left: 50%;
+        padding: 10px;
+        transform: translate(-50%, -50%);
+        font-size: 20px;
+        font-family: "Pacifico", cursive;
+        border: none;
+        background-color: #b4662e;
+        padding: 8px 20px;
+        border-radius: 5px;
+        color: beige;
+        z-index: 1;
+        font-weight: 500;
+        text-decoration: none;
+      }
+      .new:hover {
+        background-color: #8b4513;
+      }
+      .random:hover {
+        background-color: #8b4513;
+      }
+
+   
+      .ghost {
+        width: 150px;
+        height: 150px;
+        position: absolute;
+        top: 0;
+        left: 0;
+        pointer-events: none;
+        transition: transform 3.5s ease;
+        z-index: 2;
+      }
+
+          .falling-img{
+        position: fixed;
+        
+        right: -150px;
+         transform: rotateZ(0deg);
+        bottom: 0px;
+        z-index: 1;
+        transition: all 1s;
+      }
+
+      .falling-img {
+     
+     
+      animation: rotateEveryMinute 20s linear infinite;
+      transition: transform 1s ease; /* optional smoothness */
+    }
+
+      
+        .owl-img{
+          height: 150px;
+        position: fixed;
+        top: 60px;
+        /* display: none; */
+        visibility: hidden;
+        z-index:0;
+        left: 20px;
+        
+      }
+
+      .introjs-tooltip {
+        background-color: transparent;
+        border: 2px solid rgba(12, 135, 121, 0.47);
+        color: #f5f5dc;
+        font-family: "Almendra SC", cursive !important;
+
+        border-radius: 16px;
+        backdrop-filter: blur(4px);
+        box-shadow: 0 0 15px rgba(11, 179, 159, 0.607);
+      }
+
+      .introjs-tooltip-title {
+        color: #f9d923;
+        font-size: 22px;
+      }
+
+      .introjs-tooltiptext {
+        color: #dadada;
+        font-size: 16px;
+        line-height: 1.2;
+      }
+
+      .introjs-helperLayer,
+      .introjs-tooltipReferenceLayer {
+        z-index: 99999 !important; /* Ensure they're not hidden */
+      }
+
+      .introjs-overlay {
+        background: rgba(25, 168, 168, 0.6) !important;
+        z-index: 99998 !important;
+      }
+
+      .introjs-donebutton,
+      .introjs-nextbutton,
+      .introjs-prevbutton {
+        color: white;
+        font-family: "Almendra SC", serif;
+        font-size: 16px;
+        transition: all 0.5s;
+        /* From https://css.glass */
+        background: rgba(102, 161, 152, 0.47);
+        border-radius: 16px;
+        box-shadow: 0 1px 40px rgba(0, 0, 0, 0.1);
+        backdrop-filter: blur(4px);
+        -webkit-backdrop-filter: blur(4px);
+        border: 1px solid rgba(102, 161, 152, 0.93);
+      }
+
+      .introjs-donebutton:hover {
+            background-color: rgba(162, 171, 170, 0.47);
+
+
+        color: rgba(102, 161, 152, 0.47);
+      }
+
+
+      
+
+    @keyframes rotateEveryMinute {
+      0% {
+        transform: rotateZ(0deg);
+        transition: all 1s;
+      }
+      20% {
+        transform: rotateZ(3deg);
+      }
+      100% {
+        transform: rotateZ(-40deg);
+        
+      }
+
+    }
+
+
+       @media screen and (max-width:500px ) {
+
+  
+         .owl-img{
+          height: 110px;
+        position: fixed;
+        /* display:content; */
+        visibility: visible;
+        top: 220px;
+        z-index:0;
+        left: 20px;
+        
+      }
+  
+ }
+
+      
+      @media screen and (max-width: 700px) {
+        .logo {
+          position: absolute;
+          width: 300px;
+          z-index: 1;
+          margin: auto;
+        }
+
+        .ghost {
+          /* background-color:red; */
+          width: 70px;
+          height: 70px;
+        }
+
+        #box {
+         height: 100vh;
+          width: 100%;
+          background: url("https://clgoerk.github.io/assets/images/halloween.jpg");
+          background-position: left;
+          background-size: cover;
+        }
+        .text-bg {
+          z-index: 1;
+          height: 200px;
+          width: 300px;
+          transition: all 5s;
+        }
+        .quote {
+          position: absolute;
+          top: 60%;
+          left: 50%;
+          transform: translate(-50%, -50%);
+
+          text-align: center;
+          margin: auto;
+          font-size: 14px;
+          font-family: "Pacifico", cursive;
+          color: #8b4513;
+          z-index: 1;
+        }
+
+        .author {
+          margin-top: 132px;
+
+          font-family: "cursive";
+          color: #000000;
+        }
+
+        .new {
+          position: absolute;
+          bottom: 15%;
+          left: 50%;
+          transform: translate(-50%, -50%);
+          font-family: "Pacifico", cursive;
+          border: none;
+          background-color: #b4662e;
+          padding: 8px 20px;
+          border-radius: 5px;
+          color: beige;
+          /* color: rgb(191, 191, 187); */
+
+          z-index: 1;
+          font-weight: 500;
+        }
+
+
+           .falling-img{
+        position: fixed;
+        height: 320px;
+        right: -70px;
+         transform: rotateZ(0deg);
+        bottom: 0px;
+        z-index: 1;
+        transition: all 1s;
+      }
+
+   
+      }
+    </style>
+  </head>
+  <body>
+    <div><img class="logo" src="logo-hp.png" alt="logo-hp" /></div>
+    <section title="Hogwarts 🏰" id="box">
+      <div><img class="ghost" src="harry1.png" alt="ghost" /></div>
+      <div><img class="ghost" src="harry2.png" alt="ghost" /></div>
+      <div><img class="ghost" src="harry3.png" alt="ghost" /></div>
+    </section>
+
+        <div class="pause" data-title=" click Me" onclick="togglePlay()">
+      <img class="click-icon" src="./sing.png" alt="airpods-3" />
+      <div id="app">
+        
+      </div>
+    </div>
+
+    <audio
+      class="audio"
+      src="./harry ringtone.mp3"
+      preload="auto"
+      autoplay
+      type="audio"
+      loop=""
+    ></audio>
+
+    <img
+      
+      class="text-bg"
+      src="http://static.wixstatic.com/media/190eeb_e4e420ef9c607fcc1df0f2583afc11e7.png"
+      alt=""
+    />
+    <p class="quote">
+      I hope you're all pleased with yourselves. We could all have been killed -
+      or worse, expelled.
+    </p>
+    <p class="author">-Hermione Granger</p>
+    <a class="new" type="button" href="magicwand.html" > Magic🪄🔮?</a>
+    <!-- <a target="_blank"><i class="fa-brands fa-square-instagram"></i> </a> -->
+ <div><img title="Dumble Dor 🧙🏼‍♂️" id="fall" class="falling-img" src="./image.png" alt="dumbledor"></div>
+
+     <div><img title="Snowy owl "  class="owl-img" src="owl.png" alt="Snowy sleepy owl"></div>
+
+    <!-- harry potter script   -->
+
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        const ghosts = document.querySelectorAll(".ghost");
+        const box = document.getElementById("box");
+
+        function moveGhosts() {
+          ghosts.forEach((ghost) => {
+            const maxX = box.clientWidth - ghost.clientWidth;
+            const maxY = box.clientHeight - ghost.clientHeight;
+
+            const randomX = Math.floor(Math.random() * maxX);
+            const randomY = Math.floor(Math.random() * maxY);
+
+            ghost.style.transform = `translate(${randomX}px, ${randomY}px)`;
+          });
+
+          setTimeout(moveGhosts, 2000); // repeat every 3 seconds
+        }
+
+        moveGhosts();
+      });
+    </script>
+
+    <!-- Intro.js Script -->
+  <script src="https://cdn.jsdelivr.net/npm/intro.js/minified/intro.min.js"></script>
+  <script>
+    introJs()
+      .setOptions({
+        steps: [
+          {
+            element: ".owl-img",
+            intro:
+              " <strong>Hii Janhvi</strong>🦉 ,</br> My name is <strong>Snowy.</strong>",
+          },
+          {
+            element: ".falling-img",
+            intro: " <strong>Welcome</strong> to <strong>Hogwarts🏰 Janhvi </strong> </br>I'm your professor  <strong>  Dumble Dor </strong>! 🧙🏼‍♂️.",
+          },
+{
+            element: ".new",
+            intro: " <strong>Come with me 🧙🏼‍♂️🫴🏼 </strong></br><strong>Let me Guide you 🏰 Janhvi </strong>.",
+          },
+        ],
+        showProgress: false,
+        showBullets: false,
+        nextLabel: "Next →",
+        prevLabel: "← Back",
+        doneLabel: "Done ✨",
+      })
+      .start();
+  </script>
+
+    <!-- song script -->
+       <script>
+      var pause = document.querySelector(".pause");
+      var audio = document.querySelector(".audio");
+
+      function togglePlay() {
+        if (audio.paused) {
+          audio.play();
+          // <img width="40"  src="https://img.icons8.com/fluency/48/airpods-3.png" alt="airpods-3"/>
+          pause.innerHTML = "play";
+          pause.style.color = " rgb(191, 191, 187)";
+        } else {
+          audio.pause();
+          pause.innerHTML = "pause";
+          pause.style.color = " rgb(191, 191, 187)";
+        }
+      }
+    </script>
+  </body>
+</html>
+<!-- 
+
+ -->
