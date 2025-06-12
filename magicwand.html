@@ -4,6 +4,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Magic wand</title>
+    <link rel="shortcut icon"  class="favicon" href="harry1.png" type="image/x-icon">
+
+	 <!-- Intro.js CSS -->
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/intro.js/minified/introjs.min.css"
+    />
     
 <style>
     * {
@@ -109,7 +116,7 @@ body {
     top: 50%;
     left: 50%;
     transform: translate(-50%,-50%);
-    padding: 25px;
+    /* padding: 25px; */
     text-wrap: wrap-text;
     color: rgb(243, 243, 243)!important;
      font-size:14px;
@@ -159,6 +166,61 @@ border: 1px solid rgba(255, 255, 255, 0.54);
       }
       .new:hover {
         background-color: #8b4513;
+      }
+
+	  .introjs-tooltip {
+        background-color: transparent;
+        border: 2px solid rgba(12, 135, 121, 0.47);
+        color: #f5f5dc;
+        font-family: "Almendra SC", cursive !important;
+
+        border-radius: 16px;
+        backdrop-filter: blur(4px);
+        box-shadow: 0 0 15px rgba(11, 179, 159, 0.607);
+      }
+
+      .introjs-tooltip-title {
+        color: #f9d923;
+        font-size: 22px;
+      }
+
+      .introjs-tooltiptext {
+        color: #dadada;
+        font-size: 16px;
+        line-height: 1.2;
+      }
+
+      .introjs-helperLayer,
+      .introjs-tooltipReferenceLayer {
+        z-index: 99999 !important; /* Ensure they're not hidden */
+      }
+
+      .introjs-overlay {
+        background: rgba(25, 168, 168, 0.6) !important;
+        z-index: 99998 !important;
+      }
+
+      .introjs-donebutton,
+      .introjs-nextbutton,
+      .introjs-prevbutton {
+        color: white;
+        font-family: "Almendra SC", serif;
+        font-size: 16px;
+        transition: all 0.5s;
+        /* From https://css.glass */
+        background: rgba(102, 161, 152, 0.47);
+        border-radius: 16px;
+        box-shadow: 0 1px 40px rgba(0, 0, 0, 0.1);
+        backdrop-filter: blur(4px);
+        -webkit-backdrop-filter: blur(4px);
+        border: 1px solid rgba(102, 161, 152, 0.93);
+      }
+
+      .introjs-donebutton:hover {
+            background-color: rgba(162, 171, 170, 0.47);
+
+
+        color: rgba(102, 161, 152, 0.47);
       }
 
 @media screen and (max-width:700px) {
@@ -213,12 +275,12 @@ border: 1px solid rgba(255, 255, 255, 0.54);
 <div id="tiles">
 	<div class="tile">
 		<i class="fa-solid fa-image"></i>
-<!-- 		<img src="perfect.jpg" /> -->
-		<img src="https://www.numerama.com/wp-content/uploads/2023/02/img-1479.jpg" />
+		<img src="bg.gif" />
+<!-- 		<img src="https://www.numerama.com/wp-content/uploads/2023/02/img-1479.jpg" /> -->
 	</div>
 
-<!--     <div  class="message-box">
-        <p>
+   <div  class="message-box">
+      <!--  <p>
             <h1 class="text">Hai koi isse cute ?</h1>
             <br>
             If I had to choose between you and magic 🔮, I’d give up my wand 🪄 for you.
@@ -227,8 +289,10 @@ border: 1px solid rgba(255, 255, 255, 0.54);
 
             <span>My wand has chosen you 🫵🏻 🪄 !</span>
 
-        </p>
-    </div> -->
+        </p>-->
+	     <!-- <span> Swipe wand  Left ⬅️ to  Right ▶️ 🪄 !</span> -->
+	   
+    </div> 
 
 
 
@@ -236,7 +300,34 @@ border: 1px solid rgba(255, 255, 255, 0.54);
 
 </div>
 
- <a class="new" type="button" href="https://memesmanufacturer.com/wp-content/uploads/2024/09/KyuNahiHoRah-1.jpeg" >Talk ?</a>
+ <a class="new" type="button" href="snitch.html" >Game?</a>
+
+<!-- Intro.js Script -->
+  <script src="https://cdn.jsdelivr.net/npm/intro.js/minified/intro.min.js"></script>
+  <script>
+    introJs()
+      .setOptions({
+        steps: [
+          {
+            element: ".message-box",
+            intro:
+              "<strong> Janhvi🎀</strong>,</br> Swipe wand <strong> Left ⬅️ to  Right ▶️</strong> 🧙🏼‍♂️🪄  to start the  magic! 🪄.",
+          },
+          {
+            element: ".new",
+            intro: "<strong>Press Here for Snitch catch 🧙🏼‍♂️!</strong>.",
+          },
+        ],
+        showProgress: false,
+        showBullets: false,
+        nextLabel: "Next →",
+        prevLabel: "← Back",
+        doneLabel: "Done ✨",
+      })
+      .start();
+  </script>
+
+ <!-- closed here -->
 
 <script>
     const magicWand = document.getElementById("magic_wand"),
